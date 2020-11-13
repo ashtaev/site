@@ -1,53 +1,51 @@
 <?php
+use app\components\ArticlesWidget;
+use app\components\ToolsWidget;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
-/* @var $this yii\web\View */
+$this->title = $index[0]['title'];
+$this->registerMetaTag(['name'=>'description', 'content'=>$index[0]['description']]);
+$this->registerMetaTag(['name'=>'keywords', 'content'=>$index[0]['keywords']]);
 
-$this->title = 'My Yii Application';
+$this->params['h1'] = $index[0]['title'];
+$this->params['description'] = $index[0]['description'];
+
+//$result = preg_replace('/[^ a-zа-я\d.]/ui', '', $string );
+
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+<div class="container-fluid bg-light p-3 pb-5">
+    <div class="container mb-5 text-center">
+        <h2 class="mt-5 mb-3"><?= $index[1]['title'] ?></h2>
+        <p class="text-muted">
+            <?= $index[1]['description'] ?>
+        </p>
     </div>
 
-    <div class="body-content">
+    <div class="container">
+        <?= ToolsWidget::widget(['tools' => $tools]) ?>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+    <div class="container text-center">
+        <?= Html::a(' Все инструменты', Url::toRoute(['/tools']), ['class' => 'btn btn-outline-success btn-lg']) ?>
+    </div>
+</div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+<div class="container-fluid bg-white p-3 pb-5">
+    <div class="container mb-5 text-center">
+        <h2 class="mt-5 mb-3"><?= $index[2]['title'] ?></h2>
+        <p class="text-muted">
+            <?= $index[2]['title'] ?>
+        </p>
+    </div>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+    <div class="container">
+        <?= ArticlesWidget::widget(['articles' => $articles]) ?>
+    </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+    <div class="container text-center">
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
+        <?= Html::a(' Больше статей', Url::toRoute(['/articles']), ['class' => 'btn btn-outline-success btn-lg']) ?>
     </div>
 </div>

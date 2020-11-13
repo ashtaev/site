@@ -7,14 +7,27 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'layout' => 'main',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'language' => 'ru',
     'components' => [
+
+        'assetManager' => [
+            'bundles' => [
+                'yidas\yii\fontawesome\FontawesomeAsset' => [
+                    'cdn' => true,
+                    'cdnCSS' => ['//maxcdn.bootstrapcdn.com/font-awesome/5.11.0/css/font-awesome.min.css'],
+                ],
+            ],
+        ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'IWXU6K3D0xvn-5Dj4SW65JD4VGoztrRI',
+            //'baseUrl' => '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -43,14 +56,29 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+  /*              '/'=>'/site/index',
+                'Блог'=>'/articles/index',
+                '<title:.+>'=>'/articles/article',
+                'Инструменты'=>'/tools/index',
+                'Получить_ответ_сервера'=>'/tools/http-request-headers',
+                'Узнать_IP_адрес_сайта'=>'/tools/website-to-ip',
+                'Кодировать_/_декодировать URL'=>'/tools/url-encode-decode',*/
+
+                //'Тест'=>'/tests/index',
+                //'Тест_PHP'=>'/tests/PHP',
+
+                //'Статьи/<page:\d+>'=>'/page/articles',
+                //'admin/<action:\w+>'=>'/admin/posts/<action>',
+                //'admin/<action:\w+>/<id:\d+>'=>'/admin/posts/<action>',
+                //'admin'=>'/admin/posts/index',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
@@ -62,6 +90,7 @@ if (YII_ENV_DEV) {
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';
@@ -69,6 +98,7 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 }
 
