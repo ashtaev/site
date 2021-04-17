@@ -8,7 +8,7 @@ use Yii;
 use app\models\HttpHeaderCheck;
 use app\models\Pages;
 use app\models\FindWebsiteIpAddress;
-use app\components\HttpHeader;
+use app\components\ServerResponse;
 use app\components\Ip;
 
 class ToolsController extends AppController
@@ -24,8 +24,11 @@ class ToolsController extends AppController
     }
 
     public function actionHttpHeaderCheck() {
+
+        //echo $_POST['HttpHeaderCheck']['url']; die;
+
         if (Yii::$app->request->isAjax) {
-            return (new HttpHeader())->get($_POST['HttpHeaderCheck']['url']);
+            return (new ServerResponse())->getHtml($_POST['HttpHeaderCheck']['url']);
         }
 
         $model = new HttpHeaderCheck();

@@ -21,6 +21,9 @@ class SiteController extends AppController
         ];
     }
 
+
+
+
     public function actionIndex() {
         $index    = Pages::find()->where(['id' => [1,2,3]])->all();
         $tools    = Pages::find()->where(['parent_id' => 2])->all();

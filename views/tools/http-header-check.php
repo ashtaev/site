@@ -14,10 +14,15 @@ $this->params['h1'] = $article['title'];
 $this->params['description'] = $article['description'];
 
 $this->params['breadcrumbs'][] = array(
+    'label'=> 'Инструменты',
+    'url' => Url::toRoute('/tools')
+);
+
+$this->params['breadcrumbs'][] = array(
     'label'=> $article['title'],
 );
 
-$url = Url::to('/tools/' . $article['route']);
+$url = Url::toRoute('/tools/' . $article['route']);
 
 $js = <<<JS
     $('#btn').on('click', function() {
@@ -44,19 +49,21 @@ $this->registerJs($js);
 
 <div class="container-fluid bg-light py-4">
     <div class="container bg-white p-5 border text-center">
-        <p>Опреление HTTP заголовков</p>
+        <b class="text-secondary">Для опреления HTTP заголовков, просто введите URL-адрес ресурса, заголовки которого вы хотите просмотреть.</b>
 
         <?php $form = ActiveForm::begin(['options' => ['id' => 'sendUrl', 'action' => 'javascript:void(null);']]); ?>
         <?= $form->field($model, 'url')->textInput(['class' => 'form-control mb-5', 'placeholder' => "Введите адрес сайта"])->label(''); ?>
-        <?= Html::Button('Получить HTTP заголовки', ['class' => 'btn btn-success mb-2 mx-auto', 'id' => 'btn'])?>
+        <?= Html::Button('Проверить ответ сервера', ['class' => 'btn btn-success mb-2 mx-auto', 'id' => 'btn'])?>
         <?php ActiveForm::end(); ?>
 
         <div id="result" class="text-left mt-4"></div>
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid bg-light">
     <div class="container my-text pt-4">
-        <?= $article['text'] ?>
+        <div class="border p-5 mb-4 shadow-sm rounded bg-white">
+            <?= $article['text'] ?>
+        </div>
     </div>
 </div>

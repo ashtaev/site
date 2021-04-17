@@ -27,6 +27,20 @@ pre {
 .container {
     font-family: "Open Sans";
 }
+
+.jumbotron {
+background: linear-gradient(-30deg, rgba(0, 153, 255, 0.9), rgba(0, 153, 255, 0.9) 45%, rgb(0, 153, 255) 0px) rgb(255, 255, 255);
+}
+
+
+
+hr {
+margin-bottom: ;
+}
+
+.lead {
+color: rgb(209, 235, 255) !important;
+}
 CSS;
 
 $this->registerCss($css);
@@ -52,7 +66,7 @@ $this->registerCss($css);
 <div class="container-fluid bg-white">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <?= Html::a('BrandName', Url::toRoute(['/']), ['class' => 'navbar-brand']) ?>
+            <?= Html::a('ITNAV', Url::toRoute(['/']), ['class' => 'navbar-brand']) ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,7 +77,7 @@ $this->registerCss($css);
                         <?= Html::a(FAS::icon('tools') . ' Инструменты', Url::toRoute(['/tools']), ['class' => 'nav-link']) ?>
                     </li>
                 </ul>
-                <?= Html::a('Блог', Url::toRoute(['/articles']), ['class' => 'btn btn-outline-success my-2 my-sm-0']) ?>
+                <?= Html::a('Статьи', Url::toRoute(['/articles']), ['class' => 'btn btn-outline-success my-2 my-sm-0']) ?>
             </div>
         </nav>
     </div>
@@ -71,7 +85,7 @@ $this->registerCss($css);
 
 
 <!-- Jimbotron -->
-<div class="jumbotron jumbotron-fluid bg-info text-white mb-0">
+<div class="jumbotron jumbotron-fluid text-white mb-0">
     <div class="container">
         <h1 class="display-4"><?= $this->params['h1']; ?></h1>
         <p class="lead"><?= $this->params['description']; ?></p>

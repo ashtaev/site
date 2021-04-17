@@ -3,6 +3,7 @@
 /* @var $article array */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = $article['title'];
 $this->registerMetaTag(['name'=>'keywords', 'content'=>$article['keywords']]);
@@ -10,6 +11,11 @@ $this->registerMetaTag(['name'=>'description', 'content'=>$article['description'
 
 $this->params['h1'] = $article['title'];
 $this->params['description'] = $article['description'];
+
+$this->params['breadcrumbs'][] = array(
+    'label'=> 'Инструменты',
+    'url' => Url::toRoute('/tools')
+);
 
 $this->params['breadcrumbs'][] = array(
     'label'=> $article['title'],

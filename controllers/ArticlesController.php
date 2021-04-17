@@ -5,6 +5,7 @@ namespace app\controllers;
 
 
 use app\models\Pages;
+use yii\web\NotFoundHttpException;
 
 class ArticlesController extends AppController
 {
@@ -21,11 +22,11 @@ class ArticlesController extends AppController
     public function actionArticle($title) {
         $title = set_title($title);
         $article  = Pages::find()->where(['title' => $title])->one();
-        $articles = Pages::find()->where(['parent_id' => 3])->all();
+
+        if (!$article) throw new NotFoundHttpException ();
 
         return $this->render('article', [
             'article' => $article,
-            'articles' => $articles,
         ]);
     }
 }

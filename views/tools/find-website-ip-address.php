@@ -14,6 +14,11 @@ $this->params['h1'] = $article['title'];
 $this->params['description'] = $article['description'];
 
 $this->params['breadcrumbs'][] = array(
+    'label'=> 'Инструменты',
+    'url' => Url::toRoute('/tools')
+);
+
+$this->params['breadcrumbs'][] = array(
     'label'=> $article['title'],
 );
 

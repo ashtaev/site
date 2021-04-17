@@ -61,13 +61,16 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-  /*              '/'=>'/site/index',
-                'Блог'=>'/articles/index',
-                '<title:.+>'=>'/articles/article',
-                'Инструменты'=>'/tools/index',
-                'Получить_ответ_сервера'=>'/tools/http-request-headers',
-                'Узнать_IP_адрес_сайта'=>'/tools/website-to-ip',
-                'Кодировать_/_декодировать URL'=>'/tools/url-encode-decode',*/
+                '/'=>'/site/index',
+                'Статьи'=>'/articles',
+                'Инструменты'=>'/tools',
+                'Проверить_ответ_сервера'=>'/tools/http-header-check',
+                'Узнать_IP_адрес_сайта'=>'/tools/find-website-ip-address',
+                'Кодировать_и_декодировать_URL'=>'/tools/url-encoder-decoder',
+
+
+                '<title:^/+>'=>'/articles/article',
+
 
                 //'Тест'=>'/tests/index',
                 //'Тест_PHP'=>'/tests/PHP',
